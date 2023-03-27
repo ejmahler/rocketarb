@@ -74,8 +74,8 @@ you can simply `git pull` your clone of this repo.
 - Ask the smartnode to create a minipool deposit transaction from your node
   account.
 - Create a transaction to call the rocketarb contract, which will flash loan 16
-  WETH, unwrap it to native ETH, deposit it in the Rocket Pool deposit pool (using the 
-  newly created space from the minipool deposit), sell the resulting minted rETH using 1Inch, 
+  WETH, unwrap it to native ETH, deposit it in the Rocket Pool deposit pool (using the
+  newly created space from the minipool deposit), sell the resulting minted rETH using 1Inch,
   repay the flash loan, and send any profit back to your node account.
 - Submit the two transactions above in a bundle using Flashbots to prevent frontrunning.
 
@@ -123,7 +123,7 @@ created in the deposit pool by your new minipool.
 # Control how the transaction is funded
 Pass the `--funding-method` option to control how the arb is funded:
 - `--funding-method uniswap` (the default) will swap directly with a Uniswap
-  pool, getting a flash loan from the pool and using it to fund the rEth
+  pool, getting a flash loan from the pool and using it to fund the rETH
   deposit. This is relatively cheap on gas, so it's more efficient when the
   premium is small.
 - `--funding-method flashLoan` will take out a dedicated flash loan, and
@@ -134,10 +134,10 @@ Pass the `--funding-method` option to control how the arb is funded:
 
 Why choose one over another? Each has tradeoffs:
 - `self` and `flashLoan` allow more flexibility in the route the swap takes,
-  so big swaps might give more optimal arbs with these two options. 
+  so big swaps might give more optimal arbs with these two options.
 - `self` and `uniswap` don't require an explicit flash loan step, reducing
   gas costs.
-- `self` allows you to keep the minted rEth for yourself, rather than
+- `self` allows you to keep the minted rETH for yourself, rather than
   selling it back for a profit
 
 Our overall recommendation is:
@@ -145,7 +145,7 @@ Our overall recommendation is:
   costs down
 - use `flashLoan` when the premium is larger to ensure an optimal swap
 - use `self` if you have the funds and want to do something special like
-  keep the minted rEth for yourself.
+  keep the minted rETH for yourself.
 
 # Additional funding notes
 - You can control the gas limits with the various `--X-gas-limit`
